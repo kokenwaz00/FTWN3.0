@@ -1,0 +1,446 @@
+/* 
+ * ===================================================================
+ * Fatawin.com Pixel-Perfect Static Clone CSS
+ * Key Focus: Colors, Typography (Merriweather/Roboto), Shadowing, Spacing
+ * ===================================================================
+ */
+
+:root {
+    /* Color Palette extraction from visual inspection */
+    --color-primary-indigo: #4a90e2;
+    --color-dark-blue: #1a237e;
+    --color-light-bg: #f7f7f9;
+    --color-text-dark: #111827;
+    --color-text-light: #4b5563;
+    --color-white: #ffffff;
+    --color-accent-green: #22c55e;
+    --font-heading: 'Merriweather', serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+/* Base Resets & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text-dark);
+    background-color: var(--color-light-bg);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary-indigo);
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #3a62b2; /* Darker indigo on hover */
+}
+
+/* --- Layout Containers --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem; /* Matches standard padding */
+}
+
+/* --------------------- 1. Navigation Bar --------------------- */
+#navbar {
+    background-color: var(--color-white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.navbar-logo a {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--color-dark-blue);
+}
+
+.navbar-links a {
+    margin: 0 1rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+}
+
+.navbar-links a:hover {
+    color: var(--color-primary-indigo);
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+}
+
+.search-box input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-size: 0.9rem;
+}
+
+.search-box input:focus {
+    border-color: var(--color-primary-indigo);
+}
+
+.search-box button {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-primary-indigo);
+    background-color: var(--color-primary-indigo);
+    color: white;
+    cursor: pointer;
+    border-radius: 0 20px 20px 0;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    background-color: var(--color-primary-indigo);
+    color: white;
+    border-radius: 50px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.5);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.cta-button:hover {
+    background-color: #3a62b2;
+    transform: translateY(-2px);
+}
+
+/* Mobile adjustments for Nav */
+@media (max-width: 992px) {
+    .navbar-container {
+        flex-wrap: wrap;
+    }
+    .navbar-links {
+        display: none; /* Handled by JS/mobile menu logic if implemented */
+    }
+    .navbar-actions {
+        margin-top: 10px;
+        flex-basis: 100%;
+        justify-content: center;
+    }
+}
+
+/* --------------------- 2. Hero Section --------------------- */
+#hero {
+    /* Mimicking the layered, high-impact visual */
+    background: linear-gradient(135deg, #e0f2f1 0%, #c8e6c9 100%); /* Light greenish-blue gradient */
+    padding: 8rem 1rem;
+    text-align: center;
+    border-bottom: 8px solid var(--color-primary-indigo);
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--color-dark-blue);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero-content .subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.cta-hero-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+}
+
+/* --------------------- 3. Content Sections (Articles) --------------------- */
+.main-content {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-dark-blue);
+    font-weight: 900;
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.article-card {
+    background: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card:hover {
+    transform: translateY(-8px); /* Lift effect */
+    box-shadow: 0 15px 35px rgba(74, 144, 226, 0.3);
+}
+
+.card-image-container {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+}
+
+.article-card:hover .card-image-container img {
+    transform: scale(1.05); /* Zoom effect on hover */
+}
+
+.card-category {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--color-primary-indigo);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body h3 a {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--color-dark-blue);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.card-body p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.tags {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    color: var(--color-primary-indigo);
+    font-weight: 600;
+}
+
+.card-link {
+    display: inline-block;
+    font-weight: 700;
+    margin-top: auto; /* Pushes link to bottom */
+    color: var(--color-primary-indigo);
+}
+
+/* --------------------- 4. CTA Banner --------------------- */
+#cta-banner {
+    background: linear-gradient(135deg, #3f51b5, #5c6bc0); /* Deeper blue for contrast */
+    padding: 5rem 1rem;
+    text-align: center;
+    margin: 4rem 0;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cta-content h3 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.cta-content p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 30px;
+    flex-grow: 1;
+    font-size: 1rem;
+    outline: none;
+}
+
+.primary-cta {
+    padding: 12px 25px;
+    background-color: var(--color-accent-green);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+.primary-cta:hover {
+    background-color: #29a94d;
+}
+
+
+/* --------------------- 5. Footer --------------------- */
+#footer {
+    background-color: var(--color-white);
+    padding-top: 4rem;
+    padding-bottom: 1.5rem;
+    border-top: 1px solid #eee;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.footer-brand h4 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-dark-blue);
+    margin-bottom: 1rem;
+}
+
+.footer-links-group h4 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--color-dark-blue);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--color-primary-indigo);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.footer-links-group ul {
+    list-style: none;
+}
+
+.footer-links-group li a {
+    display: block;
+    padding: 5px 0;
+    color: var(--color-text-light);
+}
+
+.footer-links-group li a:hover {
+    color: var(--color-primary-indigo);
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: var(--color-primary-indigo);
+}
+
+.footer-newsletter .cta-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+.secondary-cta {
+    background-color: var(--color-primary-indigo);
+}
+.secondary-cta:hover {
+    background-color: #3a62b2;
+}
+
+
+/* Footer Bottom Copyright */
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+/* --- Responsive Overrides --- */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .navbar-links {
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 0;
+    }
+    .navbar-links a {
+        margin: 0.5rem 0;
+    }
+
+    /* Hero Scaling */
+    #hero {
+        padding: 4rem 1rem;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Article Grid Scaling */
+    .article-grid {
+        grid-template-columns: 1fr;
+    }
+}
